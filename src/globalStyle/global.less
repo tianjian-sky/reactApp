@@ -1,0 +1,344 @@
+/*
+ * @Author: Kevin.Ren
+ * @Date: 2017-08-19 09:31:45
+ * @Last Modified by: Kevin.Ren
+ * @Last Modified time: 2017-11-13 19:36:18
+ */
+
+@mainColor: #c55936;
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.clearfix:after {
+    content: " ";
+    display: block;
+    clear: both;
+    height: 0;
+  }
+.clearfix {
+    zoom: 1;
+}
+html{
+    height: 100%;
+    overflow: hidden;
+}
+body{
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Microsoft Yahei';
+    cursor: default;
+    // user-select: none;
+    // -webkit-user-select: none;
+    // font-size: 0.3rem;
+    font-size: 14px;
+    background: #fcfcfc;
+   
+}
+
+#mask{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 10000;
+}
+
+.trans{
+    background: rgba(255,255,255,0);
+}
+
+.mainColor{
+    color: @mainColor;
+}
+
+.mainBgColor{
+    background-color: @mainColor;
+}
+
+.drag{
+    -webkit-app-region: drag;
+}
+
+.noDrag{
+    -webkit-app-region: no-drag;
+}
+
+.left{
+    float: left;
+}
+
+.right{
+    float: right;
+}
+
+.cursorClick{
+    cursor: pointer;
+}
+
+.clickMask{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.offState{
+    background: rgba(255,255,255,0.68)
+}
+
+input{
+    // color: @mainColor;
+    // text-shadow: 0px 0px 0px #000;
+    // -webkit-text-fill-color: transparent;
+}
+input::-webkit-input-placeholder{
+    color: #bbbbbb;
+    font-size: 16px;
+    font-family: 'Microsoft Yahei';
+    text-shadow: none;
+    -webkit-text-fill-color: initial;
+}
+
+/* 按钮1 橙底白字 */
+.btnTheme1{
+    border-radius: 4px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    cursor:pointer;
+    font-size: 12px;
+    text-align: center;
+    border: solid 1px @mainColor;
+    background:@mainColor;
+    color:#fff;
+    outline: none;
+    -webkit-appearance : none ;
+    &:hover{
+        box-shadow: 0 2px 4px 0 @mainColor;
+    }
+    &:active{
+        opacity: 0.72;
+        *filter:alpha(opacity=72);
+        box-shadow: none;
+    }
+    &.disabled{
+        cursor: default;
+        box-shadow: none;
+        background:@mainColor;
+        color:#fff;
+        opacity: 0.32;
+        *filter:alpha(opacity=32);
+    }
+}
+/* 按钮2 白底橙字 */
+.btnTheme2{
+    border-radius: 4px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    cursor:pointer;
+    font-size: 12px;
+    text-align: center;
+    border: solid 1px @mainColor;
+    background:#fff;
+    color:@mainColor;
+    outline: none;
+    -webkit-appearance : none ;
+    &:hover{
+        background-color: rgba(255, 255, 255, 0.16);
+        box-shadow: 0 2px 4px 0 @mainColor;
+    }
+    &:active{
+        background-color: rgba(197, 89, 54, 0.16);
+        box-shadow: none;
+    }
+    &.disabled{
+        cursor: default;
+        box-shadow: none;
+        background:#fff;
+        color:@mainColor;
+        opacity: 0.32;
+        *filter:alpha(opacity=32);
+    }
+}
+/* 按钮3 灰底黑字 */
+.btnTheme3{
+    border-radius: 4px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    cursor:pointer;
+    font-size: 12px;
+    text-align: center;
+    border: solid 1px #ddd;
+    background:#f3f3f3;
+    color:#333;
+    outline: none;
+    -webkit-appearance : none ;
+    &:hover{
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.32);
+    }
+    &:active{
+        background:#ddd;
+        box-shadow: none;
+    }
+    &.disabled{
+        cursor: default;
+        box-shadow: none;
+        background:#f3f3f3;
+        background:#f3f3f3;
+        color:#333;
+        opacity: 0.48;
+        *filter:alpha(opacity=48);
+    }
+}
+/* 按钮4 白底黑字 */
+.btnTheme4{
+    border-radius: 4px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    cursor:pointer;
+    font-size: 12px;
+    text-align: center;
+    border: solid 1px #ddd;
+    background:#fff;
+    color:#333;
+    outline: none;
+    -webkit-appearance : none ;
+    &:hover{
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.24);
+    }
+    &:active{
+        background:#f3f3f3;
+        box-shadow: none;
+    }
+    &.disabled{
+        cursor: default;
+        box-shadow: none;
+        background:#f3f3f3;
+        opacity: 0.48;
+        *filter:alpha(opacity=48);
+    }
+}
+
+.textOverflow{
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+#app{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#djzyWeb{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.djHead{
+    position: relative;
+    height: 56px;
+    background:#fff;
+    .djLogo{
+        position: absolute;
+        left: 40px;
+        top: 10px;
+        width: 31px;
+        height: 37px;
+        background: url(../images/djIcon.png) center no-repeat;
+        background-size:31px 37px;
+    }
+    .headTool{
+        float: right;
+        margin:12px 40px 0 0;
+        font-size: 12px;
+        color: #333;
+    }
+}
+.dpr2x .djLogo{
+    background: url(../images/djIcon@2x.png) center no-repeat !important;
+    background-size: 31px 37px !important;
+    // -moz-background-size: 31px 37px !important;
+    // -o-background-size: 31px 37px !important;
+    // -webkit-background-size: 31px 37px !important;
+}
+.dpr3x .djLogo{
+    background: url(../images/djIcon@3x.png) center no-repeat !important;
+    background-size: 31px 37px !important;
+    // -moz-background-size: 31px 37px !important;
+    // -o-background-size: 31px 37px !important;
+    // -webkit-background-size: 31px 37px !important;
+}
+.djMain{
+    position: absolute;
+    top: 56px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    // background:#eeefef url(../images/bg.png) center no-repeat;
+    // background-size: cover;
+    // -moz-background-size: cover;
+    // -o-background-size: cover;
+    // -webkit-background-size: cover;
+}
+.dpr2x .djMain{
+    // background:#eeefef url(../images/bg@2x.png) center no-repeat;
+}
+.dpr3x .djMain{
+    // background:#eeefef url(../images/bg@3x.png) center no-repeat;
+}
