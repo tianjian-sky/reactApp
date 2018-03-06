@@ -84,7 +84,7 @@ module.exports = {
             use: 'url-loader?limit=500000'
         },
         {
-          test: /\.(ttf|svg|eot|woff)$/,
+            test: /\.(ttf|svg|eot|woff)$/,
             use: ['file-loader']
         }
         ]
