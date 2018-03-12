@@ -4,11 +4,11 @@ import Login from '../login'
 
 export default class Welcome extends React.Component {
     render(m) {
-        console.log(m)
+        console.log(this.props.match.url)
         return (
             <div>
                 <h1>Welcome, guest!自定义问诊单</h1>
-                <Route path="/login" component={Login}></Route>
+                <Route path={this.props.match.url + "login"} component={Login}></Route>
             </div>
         )
     }

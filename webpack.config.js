@@ -45,15 +45,15 @@ module.exports = {
         new webpack.NamedModulesPlugin()
     ],
     module: {
-        rules: [{
+        rules: [{ 
             test: /\.jsx?$/,
-            exclude: /(node_modules|bower_components)/,
-            use: {
+            exclude: /node_modules/, 
+            use: [{
                 loader: 'babel-loader',
                 query: {
-                    presets: ['es2015']
+                    presets: [ 'es2015','stage-3','react']
                 }
-            }
+            }]
         },
         {
             test: /\.ejs$/,
