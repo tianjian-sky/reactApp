@@ -51,7 +51,8 @@ module.exports = {
             use: [{
                 loader: 'babel-loader',
                 query: {
-                    presets: [ 'es2015','stage-3','react']
+                    presets: ['react', 'es2015','stage-3'],
+                    "plugins": ["transform-class-properties"]
                 }
             }]
         },

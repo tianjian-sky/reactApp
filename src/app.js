@@ -1,29 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './main.css';
 import { HashRouter as Router, Route} from 'react-router-dom'
 import Welcome from './modules/welcome'
+import MainPage from './modules/mainPage'
+import { store } from './statesMgr/store'
 
 class App extends Component {
+    constructor (props) {
+        super(props)
+        this.state = {
+            loginStatus: false
+        }
+        setInterval(() => {
+            console.log(store.getState())   
+        }, 1000)
+    }
     render() {
         return (
-            <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <h1 className="App-title">Welcome to React</h1>
-                </header>
-                <div className="App-intro">
-                    <Router>
-                        <Route path="/" component={Welcome}>
-                            
-                            {/* <Route path="main" component="Main">
-                                <Route path="list" component="List"></Route>
-                                <Route path="inqEdit" component="InqEdit"></Route>
-                            </Route> */}
-                        </Route>
-                    </Router>
+            <Router>
+                <div id="app">
+                    {
+                        store.getState.loginStatus ? 
+                            <Route path="/main" component={MainPage}/> : 
+                            <Route path="/" component={Welcome} /> 
+                    }
                 </div>
-            </div>
+            </Router>
         );
     }
 }
