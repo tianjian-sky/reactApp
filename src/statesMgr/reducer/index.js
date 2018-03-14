@@ -1,5 +1,6 @@
 const initState = {
-    loginStatus : false
+    loginStatus : false,
+    fetching: false
 }
 export const reducer = (state = initState, action) => {
     let newState = Object.assign({}, state)
@@ -9,6 +10,12 @@ export const reducer = (state = initState, action) => {
         return newState
     case 'SET_LOGIN_FALSE':
         newState.loginStatus = false
+        return newState
+    case 'SET_FETCHING_FALSE':
+        newState.fetching = false
+        return newState
+    case 'SET_FETCHING_TRUE':
+        newState.fetching = true
         return newState
     default: return newState;
     }

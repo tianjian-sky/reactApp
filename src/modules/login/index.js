@@ -3,8 +3,9 @@ import { store } from '../../statesMgr/store'
 
 export default class Login extends React.Component {
     constructor(props) {
-        console.log(props)
-        super()
+        
+        super(props)
+        console.log(this)
         this.state = {
             usn: 'a',
             psw: 'b'
@@ -22,11 +23,25 @@ export default class Login extends React.Component {
         e.preventDefault()
         let usn = document.getElementById('inpName-0').value.trim()
         let psw = document.getElementById('inpPwd-0').value.trim()
-        console.log(usn, psw)
         if (usn && psw) {
-            // console.log(this)
-            store.dispatch({type: 'SET_LOGIN_TRUE'})
-            console.log('2', store.getState())
+            //1. 同步action
+            // store.dispatch({type: 'SET_LOGIN_TRUE'})
+            //2. 异步action
+            //2.1 操作开始action
+            //2.2 得到异步响应action
+            // store只支持dispatch中传对象，因此需用到 redux-thunk 中间件进行改造
+            let thunk = () => {
+                store.dispatch({type: 'SET_FETCHING_TRUE'})
+                let req = new Promise((resolve,reject) => {
+                    setTimeout(() => {
+                        resolve()
+                    }, 3000)
+                })
+                req.then(() => {
+                    store.dispatch({type: 'SET_FETCHING_FALSE'})
+                })
+            }
+            store.dispatch(thunk())
         }
     }
     render () {

@@ -4,6 +4,10 @@ import Login from '../login'
 import logo from '../../logo.svg';
 
 export default class Welcome extends React.Component {
+    constructor (props) {
+        super(props)
+        console.log(this.props)
+    }
     render(m) {
         return (
             <div className="App">
@@ -14,7 +18,7 @@ export default class Welcome extends React.Component {
                 <div className="App-intro">
                     <div>
                         <h1>Welcome, guest!自定义问诊单</h1>
-                        <Route path={this.props.match.url + "login"} component={Login}></Route>
+                        <Route path={this.props.match.url + "login"} component={Login} ></Route>
                     </div>
                 </div>
             </div>
