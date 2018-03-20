@@ -63,11 +63,14 @@ export default class Login extends React.Component {
             //         }, 3000)
             //     })
             // }
-
-
-            store.dispatch(thunkP)
+            store.dispatch(thunkP())
 
             //4.redux 异步方案选择 https://segmentfault.com/a/1190000007248878
+
+
+            // 5. react-redux
+            // React-Redux 提供connect方法，用于从 UI 组件生成容器组件。connect的意思，就是将这两种组件连起来。
+
         }
     }
     render () {

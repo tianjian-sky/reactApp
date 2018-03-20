@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import './main.css';
 import { HashRouter as Router, Route} from 'react-router-dom'
-import Welcome from './modules/welcome'
+import { WelcomeRR } from './modules/welcome'  // react-redux 组件
 import MainPage from './modules/mainPage'
 import { store } from './statesMgr/store'
+
+import { Provider } from 'react-redux'
 
 class App extends Component {
     constructor (props) {
@@ -31,16 +33,18 @@ class App extends Component {
         // 如何通过Route向组件传props
         console.log('render' + Math.random())
         return (
-            <Router>
-                <div id="app">
-                    <h1>Current state: {this.state.login ? 'Login' : 'Unlogin'}</h1>
-                    {
-                        store.getState().loginStatus ? 
-                            <Route path="/main" component={MainPage}/> : 
-                            <Route path="/" component={Welcome} parent={this}/> 
-                    }
-                </div>
-            </Router>
+            <Provider store={store}>
+                <Router>
+                    <div id="app">
+                        <h1>Current state: {this.state.login ? 'Login' : 'Unlogin'}</h1>
+                        {
+                            store.getState().loginStatus ? 
+                                <Route path="/main" component={MainPage}/> : 
+                                <Route path="/" component={WelcomeRR} parent={this}/> 
+                        }
+                    </div>
+                </Router>
+            </Provider>
         );
     }
 }
