@@ -17,6 +17,19 @@ export const reducer = (state = initState, action) => {
     case 'SET_FETCHING_TRUE':
         newState.fetching = true
         return newState
+    case 'SET_FETCHING':
+        let pl = action.payLoad
+        console.warn(Math.floor(pl.nonce % 4))
+        if (Math.floor(pl.nonce % 4) === 0) {
+            console.warn('Good Luck! Door open!')
+            newState.fetching = true
+            newState.loginStatus = true
+        } else {
+            console.info('Bad luck! Try again!')
+            newState.fetching = false
+            newState.loginStatus = false
+        }
+        
     default: return newState;
     }
 };
