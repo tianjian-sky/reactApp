@@ -1,4 +1,6 @@
 import React from 'react'
+import PageHead from '../../modules/pageHead'
+import PageMain from '../../modules/pageMain'
 
 export default class MainPage extends React.Component {
     constructor (props) {
@@ -8,6 +10,11 @@ export default class MainPage extends React.Component {
         }
     }
     render () {
-        return <div>This is MainPage</div>
+        return  (
+            <div>
+                <PageHead></PageHead>
+                <PageMain></PageMain>
+            </div>
+        )
     }
 }

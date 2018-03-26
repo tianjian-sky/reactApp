@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import Login from '../login'
+import { LoginRR } from '../login'
 import logo from '../../logo.svg'
 import { connect } from 'react-redux'
 
@@ -60,7 +60,7 @@ class Welcome extends React.Component {
                 <div className="App-intro">
                     <div>
                         <h1>Welcome, guest!自定义问诊单</h1>
-                        <Route path={this.props.match.url + "login"} component={Login} ></Route>
+                        <Route path={this.props.match.url + "login"} component={LoginRR} ></Route>
                     </div>
                 </div>
                 <button onClick={this.changeMember}>点我查看组件成员属性改变能否改变视图。 当前的值：{this.nonce}</button><br/>
