@@ -35,9 +35,8 @@ class App extends Component {
             <Provider store={store}>
                 <Router>
                     <div id="app">
-                        <h1>Current state: {this.state.login ? 'Login' : 'Unlogin'}</h1>
                         <Route path="/main" component={MainPage}/> : 
-                        <Route path="/" component={WelcomeRR} parent={this}/> 
+                        <Route path="/hello" component={WelcomeRR} parent={this}/> 
                     </div>
                 </Router>
             </Provider>

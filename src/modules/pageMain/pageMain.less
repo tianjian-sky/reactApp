@@ -1,0 +1,156 @@
+.customizeInqListPage{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    .toolBanner{
+        height: 56px;
+        background: #fff;
+        border-top: 1px solid #ddc;
+        box-sizing: border-box;
+        .btnCreateInq{
+            float: left;
+            margin:12px 0 0 40px;
+            width: 120px;
+            height: 32px;
+            line-height: 32px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        .info{
+            float: right;
+            margin: 20px 40px 0 0;
+            font-size: 14px;
+            line-height: 1.0;
+            text-align: right;
+            color: #333333;
+        }
+    }
+    .main{
+        position: absolute;
+        right: 0;
+        top: 56px;
+        left: 0;
+        bottom: 0;
+        padding:0 40px;
+        box-sizing: border-box;
+        background:#eeefef;
+        overflow: auto;
+    }
+    .inqListItem{
+        position: relative;
+        float: left;
+        margin: 16px 0;
+        width: 184px;
+        height: 186px;
+        box-sizing: border-box;
+        border-radius: 4px;
+        background-color: #fff;
+        border: solid 1px #ddd;
+        list-style-type: none;
+        &:hover{
+            border:1px solid #c55936;
+            box-shadow: 0 2px 8px 0 rgba(197, 89, 54, 0.24);
+        }
+        &.clicked{
+            border:1px solid #c55936;
+            box-shadow: 0 2px 8px 0 rgba(197, 89, 54, 0.24);
+        }
+        .itemMain{
+            width:100%;
+            height: 100%;
+            overflow: hidden;
+            .title{
+                margin: 40px 20px;
+                font-size: 18px;
+                line-height: 1.44;
+                text-align: center;
+                color: #333;
+                font-family: "PingFangSC";
+                word-wrap: break-word;
+            }
+            .time{
+                position: absolute;
+                left: 0;
+                width: 100%;
+                bottom: 32px;
+                text-align: center;
+                font-size: 12px;
+                text-align: center;
+                color: #999;
+            }
+        }
+        .btnListWrap{
+            position: absolute;
+            height: 48px;
+            width: 100%;
+            bottom: 0px;
+            overflow: hidden;
+        }
+        .btnList{
+            position: absolute;
+            bottom: -48px;
+            left: 0;
+            width: 100%;
+            height: 48px;
+            overflow: hidden;
+            font-size: 14px;
+            color: #333;
+            transition: bottom 0.6s;
+            .btn{
+                background: #eeefef;
+                width: 50%;
+                height: 100%;
+                line-height: 48px;
+                float: left;
+                text-align: center;
+                cursor: pointer;
+                &.btnEdit{
+                    border-bottom-left-radius: 4px;
+                }
+                &.btnCopy{
+                    border-bottom-right-radius: 4px;
+                }
+                &:hover{
+                    background:#d8d8d8;
+                }
+            }
+        }
+        &:hover .btnList {
+            bottom: 0;
+        }
+    }
+    .emptyBgWrap{
+        position: absolute;
+        width: 100%;
+        height: 230px;
+        left:0;
+        top: 50%;
+        margin-top: -110px;
+        .emptyBg{
+            margin: 0 auto;
+            width: 180px;
+            height: 180px;
+            background: url(../../images/empty.png) center no-repeat;
+        }
+        .emptyWord{
+            margin: 22px 0 0;
+            font-family: 'Microsoft Yahei';
+            font-size: 20px;
+            text-align: center;
+            color: #bbb;
+        }
+    }
+}
+.dpr2x{
+    .emptyBg{
+        background: url(../../images/empty@2x.png) center no-repeat !important;
+        background-size: 180px 180px !important;
+    }
+} 
+.dpr3x{
+    .emptyBg{
+        background: url(../../images/empty@3x.png) center no-repeat !important;
+        background-size: 180px 180px !important;
+    }
+} 

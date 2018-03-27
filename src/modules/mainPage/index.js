@@ -11,7 +11,7 @@ export default class MainPage extends React.Component {
     }
     render () {
         return  (
-            <div>
+            <div className="app">
                 <PageHead></PageHead>
                 <PageMain></PageMain>
             </div>

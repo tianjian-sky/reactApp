@@ -66,7 +66,7 @@ module.exports = {
         },
         {
             test: /\.css$/,
-            use: ['css-loader', 'postcss-loader']
+            use: ['style-loader', 'css-loader', 'postcss-loader']
             // use: ExtractTextPlugin.extract({
             //     fallback: 'style-loader',
             //     use: ['css-loader', 'postcss-loader']
@@ -74,7 +74,7 @@ module.exports = {
         },
         {
             test: /\.less$/,
-            use: ['css-loader', 'postcss-loader', 'less-loader']
+            use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']
             // use: ExtractTextPlugin.extract({
             //     fallback: 'style-loader',
             //     use: ['css-loader', 'postcss-loader', 'less-loader']
