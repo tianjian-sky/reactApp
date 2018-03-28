@@ -1,6 +1,6 @@
 import React from 'react'
 import PageHead from '../../modules/pageHead'
-import PageMain from '../../modules/pageMain'
+import {PageMainRR} from '../../modules/pageMain'
 
 export default class MainPage extends React.Component {
     constructor (props) {
@@ -11,9 +11,9 @@ export default class MainPage extends React.Component {
     }
     render () {
         return  (
-            <div className="app">
+            <div style={{ height: '100%' }} className="app">
                 <PageHead></PageHead>
-                <PageMain></PageMain>
+                <PageMainRR></PageMainRR>
             </div>
         )
     }
