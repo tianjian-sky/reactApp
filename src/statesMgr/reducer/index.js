@@ -1,6 +1,8 @@
 const initState = {
     loginStatus : false,
-    fetching: false
+    fetching: false,
+    inqList: [],
+    curInq: null
 }
 export const reducer = (state = initState, action) => {
     let newState = Object.assign({}, state)
@@ -29,7 +31,16 @@ export const reducer = (state = initState, action) => {
             newState.fetching = false
             newState.loginStatus = false
         }
-        
+        return newState
+    case 'SET_INQ_LIST':
+        if (action.payLoad.type = 'add') {
+            newState.inqList = newState.inqList.concat(action.payLoad.data)
+        } else if (action.payLoad.type = 'remove') {
+            newState.inqList.splice(action.payLoad.delIndex,1)
+        } else if (action.payLoad.type = 'set') {
+            newState.inqList[action.payLoad.delIndex] = action.payLoad.data
+        }
+        return newState
     default: return newState;
     }
 };
