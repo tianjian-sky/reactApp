@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
 import inqList from '../../mock/inquirieList.json'
 import { InqListItemRR } from '../../components/inqListItem/inqListItem'
@@ -28,6 +29,7 @@ class InqListContainer extends React.Component {
         this.state = {
 
         }
+        this.child = {}
         this.cacheListComp = []
         this.getInqList()
     }
@@ -36,6 +38,11 @@ class InqListContainer extends React.Component {
     componentDidMount = () => {
         window.onresize = this.setLayout
         this.setLayout()
+        console.log('mount')
+    }
+
+    componentWillReceiveProps = (nextProps) => {
+        console.log('will recieve prop', nextProps)
     }
 
     shouldComponentUpdate = (nextProps, nextState) => {
@@ -48,47 +55,60 @@ class InqListContainer extends React.Component {
     }
 
     componentDidUpdate = () => {
+        console.log('did update',this)
         this.setLayout()
+    }
+
+    componentWillUnmount = () => {
+        console.log('will unmount')
+        window.onresize = null
     }
 
     getInqList = () => {
         setTimeout(() => {
             this.props.setInqList(inqList)
         },3000)
+        setTimeout(() => {
+            console.log(this.child, '5000')
+        },5000)
     }
 
     setLayout = () => {
-        console.log(this.cacheListComp)
         const minGapW = 20
         const cardWidth = 184
-        // const container = this.refs
-        // const cards = this.cacheListComp
-        // const cardLen = cards && cards.length
-        // let availWidth
-        // availWidth = container.clientWidth
-        // if (availWidth < 2 * cardWidth + minGapW) {
-        //     for (let i = 0; i < cards.length; i++) {
-        //         cards[i].props.styleObj.marginLeft = Math.floor((availWidth - cardWidth) / 2)
-        //     }
-        //     return
-        // }
-        // let cardsPerRow = 2 // 每行显示卡片个数
-        // let gapWidth
-        // if (container && cardLen) {
-        //     gapWidth = Math.floor((availWidth - cardsPerRow * cardWidth) / (cardsPerRow * 2))
-        //     for (cardsPerRow; cardsPerRow < 26; cardsPerRow++) {
-        //         let gapW = Math.floor((availWidth - cardsPerRow * cardWidth) / (cardsPerRow * 2))
-        //         if (gapW < minGapW) {
-        //             cardsPerRow--
-        //             break
-        //         } else {
-        //             gapWidth = gapW
-        //         }
-        //     }
-        //     for (let i = 0; i < cardLen; i++) {
-        //         cards[i].props.styleObj.marginLeft = cards[i].props.styleObj.marginRight = gapWidth
-        //     }
-        // }
+        const container = this.selfDom
+        const cards = this.child
+        const cardsArr = this.cacheListComp
+        const cardLen = cardsArr && cardsArr.length
+        let availWidth
+        availWidth = container.clientWidth
+        if (availWidth < 2 * cardWidth + minGapW) {
+            for (var k in this.child) {
+                if (this.child.hasOwnProperty(k)) {
+                    ReactDOM.findDOMNode(this.child[k]).style.marginLeft = Math.floor((availWidth - cardWidth) / 2) + 'px'
+                }
+            }
+            return
+        }
+        let cardsPerRow = 2 // 每行显示卡片个数
+        let gapWidth
+        if (container && cardLen) {
+            gapWidth = Math.floor((availWidth - cardsPerRow * cardWidth) / (cardsPerRow * 2))
+            for (cardsPerRow; cardsPerRow < 26; cardsPerRow++) {
+                let gapW = Math.floor((availWidth - cardsPerRow * cardWidth) / (cardsPerRow * 2))
+                if (gapW < minGapW) {
+                    cardsPerRow--
+                    break
+                } else {
+                    gapWidth = gapW
+                }
+            }
+            for (var k in this.child) {
+                if (this.child.hasOwnProperty(k)) {
+                    ReactDOM.findDOMNode(this.child[k]).style.marginLeft = ReactDOM.findDOMNode(this.child[k]).style.marginRight = gapWidth + 'px'
+                }
+            }
+        }
     }
 
     formatTime(timestamp){
@@ -100,6 +120,7 @@ class InqListContainer extends React.Component {
         m = m < 10 ? '0' + m : m
         return y + '-' + m + 'd'
     }
+
     render = () => {
         let lists = []
         let data = this.props.inqList
@@ -108,11 +129,14 @@ class InqListContainer extends React.Component {
             marginRight:8
         }
         data.map((v, i) => {
-            lists.push( <InqListItemRR data={v} key={v.id} styleObj={styleObj} refs="{'listItem-' + v.id}"/> )
+            lists.push( <InqListItemRR ref={(d)=>{ this.child['listItem-' + i]= d}} data={v} key={v.id} styleObj={styleObj}/> )
         })
+        setTimeout(() => {
+            console.log('&*&*&*', this.child)
+        },2000)
         this.cacheListComp = lists
         return  (
-            <ul className="inqList" id="inqList-0"  ref="listContainer" >
+            <ul className="inqList" id="inqList-0" ref={(d)=>{this.selfDom = d}} refs="listContainer">
                 {lists}
             </ul>
         )

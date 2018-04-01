@@ -1,0 +1,195 @@
+.createInqDialogBox{
+    position: absolute;
+    left:50%;
+    top:50%;
+    margin-top:-228px;
+    margin-left:-400px;
+    width: 800px;
+    height: 456px;
+    .font1{
+        font-size: 18px;
+        color: #333;
+    }
+    .font2{
+        font-size: 12px;
+        line-height: 1.08;
+        color: #666;
+    }
+    .createInqDialogBoxHead{
+        height: 56px;
+        line-height: 56px;
+        background-color: #ffffff;
+        text-align: center;
+        color: #333;
+        font-size: 18px;
+    }
+    .createInqDialogBoxBody{
+        height: 400px;
+        box-sizing: border-box;
+        background: #f6f6f6;
+        border-top: 1px solid #ddd;
+        font-family: "PingFangSC";
+        .left{
+            float: left;
+            width: 306px;
+            height: 100%;
+            padding: 0 48px 0 50px;
+            box-sizing: border-box;
+            border-right: 1px solid #ddd;
+            .font1{
+                margin: 24px 0 0 0;
+            }
+            .font2{
+                margin: 8px 0 0 0;
+            }
+            .createArea{
+                position: relative;
+                margin-top: 24px;
+                width: 208px;
+                height: 256px;
+                background:#fff;
+                border: 1px solid #ddd;
+                &:hover{
+                    border: 1px solid #c55936;
+                    box-shadow:  0 2px 8px 0 rgba(197, 89, 54, 0.24);
+                    -webkit-box-shadow:  0 2px 8px 0 rgba(197, 89, 54, 0.24);
+                    -moz-box-shadow:  0 2px 8px 0 rgba(197, 89, 54, 0.24);
+                }
+            }
+            .fileIcon{
+                margin: 48px auto;
+                width: 90px;
+                height: 123px;
+                background: url(../../images/file.png) center no-repeat;
+            }
+            .btnCreateInq{
+                display: block;
+                margin: 0 auto;
+                width: 88px;
+                height: 24px;
+                box-sizing: border-box;
+                border: 1px solid #ddd;
+                line-height: 24px;
+                color: #fff;
+                &:hover{
+                    border:1px solid #c55936;
+                }
+            }
+        }
+        .right{
+            margin-left: 306px;
+            height: 100%;
+            float: none;
+            padding: 0 53px 0 48px;
+            .font1{
+                margin:24px 0 0 0;
+            }
+            .font2{
+                margin: 8px 0 0 0;
+            }
+            .templateList{
+                display: block;
+                margin: 8px 0 0;
+                .templateListItem{
+                    float: left;
+                    position: relative;
+                    margin:16px 16px 0 0;
+                    /*padding: 24px 13px 0;*/
+                    padding: 24px 0 0;
+                    width: 120px;
+                    height: 120px;
+                    border: 1px solid #ddd;
+                    background: #fff;
+                    box-sizing: border-box;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    list-style-type: none;
+                    cursor: pointer;
+                    .title{
+                        margin: 0;
+                        padding: 0;
+                        font-size: 14px;
+                        line-height: 1.07;
+                        text-align: center;
+                        color: #333;
+                    }
+                    .subtitle{
+                        margin: 8px 0 0 0;
+                        padding: 0;
+                        font-size: 12px;
+                        line-height: 1.25;
+                        text-align: center;
+                        color: #999;
+                    }
+                    .btnWrap{
+                        width: 88px;
+                        margin:19px auto;
+                        .btnUseTemplate{
+                            display: block;
+                            font-size: 14px;
+                            text-align: center;
+                            width: 100%;
+                            height: 24px;
+                            line-height: 24px;
+                        }
+                    }
+                    &:hover,&.clicked{
+                        box-shadow: 0 2px 8px 0 rgba(197, 89, 54, 0.24);
+                        border: solid 1px #c55936;
+                        .btnUseTemplate{
+                            background: #c55936;
+                            color:#fff;;
+                            box-shadow: 0 2px 4px 0 #c55936;
+                            -webkit-box-shadow: 0 2px 4px 0 #c55936;
+                            -moz-box-shadow: 0 2px 4px 0 #c55936;
+                        }
+                    }
+                    &:nth-child(3){
+                        margin-right:0;
+                    }
+                }
+            }
+        }
+    }
+    .btnClose{
+        position: absolute;
+        top:16px;
+        right: 24px;
+        width:24px;
+        height: 24px;
+        background: url(../../images/close.png) center no-repeat;
+        cursor: pointer;
+    }
+}
+.dp2x{
+    .fileIcon{
+        background: url(../../images/file@2x.png) center no-repeat;
+        background-size: 90px 123px;
+        -moz-background-size: 90px 123px;
+        -o-background-size: 90px 123px;
+        -webkit-background-size: 90px 123px;
+    }
+    .btnClose{
+        background: url(../../images/close@2x.png) center no-repeat;
+        background-size: 24px 24px;
+        -moz-background-size: 24px 24px;
+        -o-background-size: 24px 24px;
+        -webkit-background-size: 24px 24px;
+    }
+}
+.dp3x{
+    .fileIcon{
+        background: url(../../images/file@3x.png) center no-repeat;
+        background-size: 90px 123px;
+        -moz-background-size: 90px 123px;
+        -o-background-size: 90px 123px;
+        -webkit-background-size: 90px 123px;
+    }
+    .btnClose{
+        background: url(../../images/close@3x.png) center no-repeat;
+        background-size: 24px 24px;
+        -moz-background-size: 24px 24px;
+        -o-background-size: 24px 24px;
+        -webkit-background-size: 24px 24px;
+    }
+}
