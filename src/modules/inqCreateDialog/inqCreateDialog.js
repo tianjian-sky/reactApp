@@ -21,6 +21,9 @@ class InqCreateDialog extends React.Component {
         }
     }
 
+    closeDialog = () => {
+        this.props.handleCreateInq(false)
+    }
 
     componentDidMount = () => {
     }
@@ -44,42 +47,47 @@ class InqCreateDialog extends React.Component {
     }
 
     render = () => {
+        let lists = []
+        let data = inqTplList
+        let styleObj= {
+            marginLeft:8,
+            marginRight:8
+        }
+        data.map((v, i) => {
+            lists.push(
+                <li className="templateListItem" id="btnUseTemplate-{i}" key={"btnUseTemplate-" + i}>
+                    <p className="title">{v.name}</p>
+                    <p className="subtitle">{v.count}题</p>
+                    <div className="btnWrap">
+                        <a className="btnTheme2 btnUseTemplate" data-name="{v.name}">使用此模板</a>
+                    </div>
+                    <div className="clickMask" id="templateListItem-{v.id}" data-name="{v.name}"></div>
+                    <div className="clickMask" id="templateListItem-{v.id}" data-name="{v.name}"></div>
+                </li>
+            )
+        })
+
         return  (
-            <div class="createInqDialogBox">
-                <div class="createInqDialogBoxHead">
+            <div className="createInqDialogBox">
+                <div className="createInqDialogBoxHead">
                     创建问诊单
-                    <a class="btnClose" id="btnCreateInqDialogBox-0"></a>
+                    <a onClick= {this.closeDialog} className="btnClose" id="btnCreateInqDialogBox-0"></a>
                 </div>
-                <div class="createInqDialogBoxBody">
-                    <div class="left">
-                        <div class="font1">创建空白问诊单</div>
-                        <div class="font2">从一份空白问诊单开始创建</div>
-                        <div class="createArea">
-                            <div class="fileIcon"></div>
-                            <a class="btnTheme1 btnCreateInq">开始创建</a>
-                            <div class="clickMask" id="btnCreateInqBlank-0"></div>
+                <div className="createInqDialogBoxBody">
+                    <div className="left">
+                        <div className="font1">创建空白问诊单</div>
+                        <div className="font2">从一份空白问诊单开始创建</div>
+                        <div className="createArea">
+                            <div className="fileIcon"></div>
+                            <a className="btnTheme1 btnCreateInq">开始创建</a>
+                            <div className="clickMask" id="btnCreateInqBlank-0"></div>
                         </div>
                     </div>
-                    <div class="right">
-                        <div class="font1">选择模板</div>
-                        <div class="font2">您还可以选择系统问诊单为模板进行修改来创建新问诊单</div>
-                        <ul class="templateList">
-                            {/* <%
-                                for (var i = 0; i < list.length; i++) {
-                                    var cur = list[i];
-                            %>
-                                <li class="templateListItem" id="btnUseTemplate-${i}">
-                                    <p class="title">${cur.name}</p>
-                                    <p class="subtitle">${cur.count}题</p>
-                                    <div class="btnWrap">
-                                        <a class="btnTheme2 btnUseTemplate" data-name="${cur.name}">使用此模板</a>
-                                    </div>
-                                    <div class="clickMask" id="templateListItem-${cur.id}" data-name="${cur.name}"></div>
-                                    <!-- <div class="clickMask" id="templateListItem-${cur.id}" data-name="${cur.name}"></div> -->
-                                </li>
-                            <%
-                                }
-                            %> */}
+                    <div className="right">
+                        <div className="font1">选择模板</div>
+                        <div className="font2">您还可以选择系统问诊单为模板进行修改来创建新问诊单</div>
+                        <ul className="templateList">
+                            {lists}
                         </ul>
                     </div>
                 </div>

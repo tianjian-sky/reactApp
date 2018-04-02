@@ -25,25 +25,22 @@ class PageMain extends React.Component {
             showCrateInqDialog: false
         }
     }
-    handleCreateInq = (e) => {
-        // alert('win')
+    handleCreateInq = (flg) => {
+        this.setState({showCrateInqDialog: flg})
     }
 
     render () {
         return (
             <div className="customizeInqListPage" id="customizeInqListPage-0">
                 <div className="toolBanner">
-                    <a className="btnCreateInq btnTheme1" id="btnCreateInq-0" onClick={this.handleCreateInq}>+创建问诊单</a>
+                    <a className="btnCreateInq btnTheme1" id="btnCreateInq-0" onClick={() => this.handleCreateInq(true)}>+创建问诊单</a>
                     <label className="info">已创建问诊单  {this.props.inquiryList ? this.props.inquiryList.length : 0} 张</label>
                 </div>
                 <div className="main" id="customizeInqListPageMain-0">
                     <InqListContainerRR></InqListContainerRR>
                 </div>
-                {this.state.showCrateInqDialog ? <InqCreateDialogRR /> : ''}
+                {this.state.showCrateInqDialog ? <InqCreateDialogRR handleCreateInq={this.handleCreateInq}/> : ''}
             </div>
-
-
-
         )
     }
 }
