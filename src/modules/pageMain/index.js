@@ -3,7 +3,7 @@ import {InqListContainerRR} from '../../modules/inqListContainer'
 import  { InqCreateDialogRR } from '../inqCreateDialog/inqCreateDialog'
 import { connect } from 'react-redux'
 import React from 'react'
-
+import PropTypes from 'prop-types'
 const mapStateToProps = (state, ownProps) => { // connect方法在执行时自动将此方法返回的状态注入到组件的props中
     return {
         inquiryList: state.inqList
@@ -28,7 +28,31 @@ class PageMain extends React.Component {
     handleCreateInq = (flg) => {
         this.setState({showCrateInqDialog: flg})
     }
+    /**
+     *  不使用redux的情况下跨层级传递prop，使用context
+     * 1）在父级定义context对象的数据类型
+     * 类型
+     * ParentComponent.childContextTypes = {
+     *       contextProp1: PropTypes.string
+     * }
+     * 2）在父级定义要传递的context对象的数据， 通过使用getChildContext（）方法
+     *  getChildContext = () => {
+            return {
+                contextProp1: 'red'
+            }
+     *   }
+     * 3)使用端定义需要接收的context对象成员类型 （基于prop-types库
+     * InqListItem.contextTypes = {
+     *       contextProp1: PropTypes.string
+     *   }）
+     */
 
+
+    getChildContext = () => {
+        return {
+            contextProp1: 'red'
+        }
+    }
     render () {
         return (
             <div className="customizeInqListPage" id="customizeInqListPage-0">
@@ -43,5 +67,8 @@ class PageMain extends React.Component {
             </div>
         )
     }
+}
+PageMain.childContextTypes = {
+    contextProp1: PropTypes.string
 }
 export const PageMainRR = connect(mapStateToProps,mapDispatchToProps)(PageMain)

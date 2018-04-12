@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import './inqListItem.css'
+import PropTypes from 'prop-types'
+import { prototype } from 'stream';
 
 const mapStateToProps = (state, ownProps) => { // connect方法在执行时自动将此方法返回的状态注入到组件的props中
     return {
@@ -24,6 +26,7 @@ class InqListItem extends React.Component {
 
 
     componentDidMount = () => {
+        console.log('get context From parent without writting', this.context)
     }
 
     shouldComponentUpdate = (nextProps, nextState) => {
@@ -69,5 +72,18 @@ class InqListItem extends React.Component {
             </li>
         )
     }
+}
+
+InqListItem.contextTypes = {
+    contextProp1: PropTypes.string
+}
+
+/**
+ * 使用prop-types 库对组件props进行类型校验
+ */
+InqListItem.propTypes = {
+    data: PropTypes.object,
+    // data: PropTypes.string,  类型不匹配，报错！
+    styleObj: PropTypes.object  // 相当于一些列的类型判断方法
 }
 export const InqListItemRR = connect(mapStateToProps,mapDispatchToProps)(InqListItem)
