@@ -32,13 +32,14 @@ class InqListContainer extends React.Component {
         this.child = {}
         this.cacheListComp = []
         this.getInqList()
+        console.log('###props.children', this.props)
     }
 
 
     componentDidMount = () => {
         window.onresize = this.setLayout
         this.setLayout()
-        console.log('mount')
+        console.log('mount', this.props)
     }
 
     componentWillReceiveProps = (nextProps) => {
@@ -138,6 +139,10 @@ class InqListContainer extends React.Component {
         return  (
             <ul className="inqList" id="inqList-0" ref={(d)=>{this.selfDom = d}} refs="listContainer">
                 {lists}
+                { React.Children.map(this.props.children, function (a, b, c) {
+                    console.log('React.children arguments:', a, b, c)
+                    return <li>{a}</li>;
+                })}
             </ul>
         )
     }

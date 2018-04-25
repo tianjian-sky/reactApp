@@ -28,6 +28,8 @@ class Login extends React.Component {
         }
     }
 
+    componentDidMount () {
+    }
     handleChange =  (e) => {
         let target = e.target
         if (target.id.indexOf('Name') >= 0) {

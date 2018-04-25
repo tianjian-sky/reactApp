@@ -61,7 +61,10 @@ class PageMain extends React.Component {
                     <label className="info">已创建问诊单  {this.props.inquiryList ? this.props.inquiryList.length : 0} 张</label>
                 </div>
                 <div className="main" id="customizeInqListPageMain-0">
-                    <InqListContainerRR></InqListContainerRR>
+                    <InqListContainerRR>
+                        <span>这里是问诊单列表容器</span>
+                        <span>这里是问诊单列表容器 slot 2</span>
+                    </InqListContainerRR>
                 </div>
                 {this.state.showCrateInqDialog ? <InqCreateDialogRR handleCreateInq={this.handleCreateInq}/> : ''}
             </div>
