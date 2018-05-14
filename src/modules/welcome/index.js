@@ -44,7 +44,18 @@ class Welcome extends React.Component {
         })
         console.log('**',this)
     }
+    componentDidMount () {
+    }
+    myFunc () {
+        console.log('一般成员方法this', this)
+    }
+    testThis () {
+        console.log("watch this", this)
+    }
+    testThis
     render(m) {
+        this.myFunc()
+        console.log('class 成员方法中的this', this)
         return (
             <div className="App" style={{ height: '100%' }}>
                 <header className="App-header">
@@ -65,7 +76,11 @@ class Welcome extends React.Component {
                 </div>
                 <button onClick={this.changeMember}>点我查看组件成员属性改变能否改变视图。 当前的值：{this.nonce}</button><br/>
                 <button onClick={this.changeState}>点我查看组件state改变能否改变视图。 当前的值：{this.state.stateNonce}</button><br/>
-                <button onClick={this.changeMember}>点我查看组件props改变能否改变视图(显然！)。 当前的值：{this.nonce}</button>
+                <button onClick={this.changeMember}>点我查看组件props改变能否改变视图(显然！)。 当前的值：{this.nonce}</button><br/>
+                <button onClick={this.testThis}>查看this指向未绑定：</button><br/>
+                <button onClick={this.testThis.bind(this)}>查看this指向绑定：</button>
+                <br/>
+                <br/>
             </div>
         )
     }

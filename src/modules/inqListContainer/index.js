@@ -139,9 +139,9 @@ class InqListContainer extends React.Component {
         return  (
             <ul className="inqList" id="inqList-0" ref={(d)=>{this.selfDom = d}} refs="listContainer">
                 {lists}
-                { React.Children.map(this.props.children, function (a, b, c) {
-                    console.log('React.children arguments:', a, b, c)
-                    return <li>{a}</li>;
+                { React.Children.map(this.props.children, (a, b, c) => {
+                    // this.props.canPropChange = Math.random() * 9999
+                    return <li ref={this.props.deepDom}>{a}</li>;
                 })}
             </ul>
         )

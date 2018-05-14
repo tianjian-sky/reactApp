@@ -130,21 +130,21 @@ const ConnectedComment = connect(commentSelector, commentActions)(CommentList);
 
     ``` javascript
     render() {
-    // A new version of EnhancedComponent is created on every render
-    // EnhancedComponent1 !== EnhancedComponent2
-    const EnhancedComponent = enhance(MyComponent);
-    // That causes the entire subtree to unmount/remount each time!
-    return <EnhancedComponent />;
+        // A new version of EnhancedComponent is created on every render
+        // EnhancedComponent1 !== EnhancedComponent2
+        const EnhancedComponent = enhance(MyComponent);
+        // That causes the entire subtree to unmount/remount each time!
+        return <EnhancedComponent />;
     }
     ```
 2. 输入组件的静态方法必须被copy给hoc
 
     ``` javascript 
     function enhance(WrappedComponent) {
-    class Enhance extends React.Component {/*...*/}
-    // Must know exactly which method(s) to copy :(
-    Enhance.staticMethod = WrappedComponent.staticMethod;
-    return Enhance;
+        class Enhance extends React.Component {/*...*/}
+        // Must know exactly which method(s) to copy :(
+        Enhance.staticMethod = WrappedComponent.staticMethod;
+        return Enhance;
     }
     ```
     * 也可使用 hoist-non-react-statics 库自动完成此工作 
@@ -152,9 +152,9 @@ const ConnectedComment = connect(commentSelector, commentActions)(CommentList);
     ``` javascript
     import hoistNonReactStatic from 'hoist-non-react-statics';
     function enhance(WrappedComponent) {
-    class Enhance extends React.Component {/*...*/}
-    hoistNonReactStatic(Enhance, WrappedComponent);
-    return Enhance;
+        class Enhance extends React.Component {/*...*/}
+        hoistNonReactStatic(Enhance, WrappedComponent);
+        return Enhance;
     }
     ```
 3. ref不会被正确传递，指向的是hoc组件，解决方法，使用React.forwardRef API 

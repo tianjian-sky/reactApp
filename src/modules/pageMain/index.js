@@ -24,6 +24,7 @@ class PageMain extends React.Component {
         this.state = {
             showCrateInqDialog: false
         }
+        this.deepDom = 1
     }
     handleCreateInq = (flg) => {
         this.setState({showCrateInqDialog: flg})
@@ -47,6 +48,11 @@ class PageMain extends React.Component {
      *   }）
      */
 
+    componentDidMount () {
+        setTimeout(() => {
+            console.log('-->>>>>>', this)   
+        }, 3000)
+    }
 
     getChildContext = () => {
         return {
@@ -61,7 +67,7 @@ class PageMain extends React.Component {
                     <label className="info">已创建问诊单  {this.props.inquiryList ? this.props.inquiryList.length : 0} 张</label>
                 </div>
                 <div className="main" id="customizeInqListPageMain-0">
-                    <InqListContainerRR>
+                    <InqListContainerRR deepDom={(e) => {this.deepDom = e}}>
                         <span>这里是问诊单列表容器</span>
                         <span>这里是问诊单列表容器 slot 2</span>
                     </InqListContainerRR>
