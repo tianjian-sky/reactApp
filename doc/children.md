@@ -68,4 +68,6 @@ class InqListContainer extends React.Component {
 > React.Children.toArray  
 > ... 
 
+> 推荐使用React.children.map处理render中循环输出children
+
 [参考](https://reactjs.org/docs/react-api.html)
